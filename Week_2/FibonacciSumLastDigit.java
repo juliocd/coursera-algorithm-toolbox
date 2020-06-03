@@ -16,18 +16,19 @@ class FibonacciSumLastDigit {
             return;
         }
 
-        long n1 = 0;
-        long n2 = 1;
-        long value = n2;
-        long sum = value;
+        int n1 = 0;
+        int n2 = 1;
 
-        for(long i=2; i <= n; i++){
-            value = (n1 + n2) % 10;
+        // Pisano period for % 10 is 60 
+        int pp = (int) (n % 60);
+        pp = pp + 2;  
+
+        for(int i = 1; i < pp; i++){
+            int value = (n1 + n2) % 60;
             n1 = n2;
             n2 = value;
-            sum += value;
         }
 
-        System.out.println(sum % 10);
+        System.out.println((n2 - 1) % 10);
     }
 }
